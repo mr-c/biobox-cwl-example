@@ -6,23 +6,28 @@ requirements:
   DockerRequirement:
     dockerPull: bioboxes/megahit
     dockerOutputDirectory: /bbx/output
+  InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing:
       - entryname: /bbx/input/biobox.yaml
         entry: |
-          ---
+          ${ var ret = `---
           version: "0.9.0"
           arguments:
             - fastq:
-              - id: "reads1"
+          `;
+             inputs.fastqs.forEach(function(entry, index) {
+               ret += `    - id: "reads${index}"
                 type: "paired"
-                value: "$(inputs.fastq.path)"
+                value: "${entry.path}"
+             `;});
+             return ret; }
 
 inputs:
-  fastq:
-    label: interleaved paired & gziped reads
-    type: File
-    format: edam:format_1930  # FASTQ
+  fastqs:
+    label: interleaved paired & gzipped reads
+    type: File[]
+    #format: edam:format_1930  # FASTQ
 
 baseCommand: default
 

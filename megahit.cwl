@@ -13,7 +13,7 @@ hints:
 inputs:
   sequences:
     type: File[]
-    label: interleaved & gziped fasta/q paired-end files
+    label: interleaved & gzipped fasta/q paired-end files
     format:
       - edam:format_1930  # FASTQ
       - edam:format_1929  # FASTA
