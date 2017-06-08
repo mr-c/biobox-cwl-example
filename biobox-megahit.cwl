@@ -4,9 +4,7 @@ class: CommandLineTool
 
 requirements:
   DockerRequirement:
-    dockerPull: cwl-bioboxes-megahit2
-    # ^-- built from --v using https://github.com/bioboxes/biobox-minimal-base/pull/3
-    #dockerPull: bioboxes/megahit
+    dockerPull: bioboxes/megahit
     dockerOutputDirectory: /bbx/output
   InitialWorkDirRequirement:
     listing:
