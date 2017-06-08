@@ -2,10 +2,6 @@
 cwlVersion: v1.0
 class: CommandLineTool
 
-requirements:
-  ResourceRequirement:
-    coresMin: 12
-
 hints:
   DockerRequirement:
     dockerPull: quay.io/biocontainers/megahit:1.1.1--py36_0
@@ -60,7 +56,7 @@ $namespaces:
  s: http://schema.org/
  bioboxes: http://bioboxes.org
 $schemas:
- - http://edamontology.org/EDAM_1.16.owl
+ - http://edamontology.org/EDAM_1.17.owl
  - https://schema.org/docs/schema_org_rdfa.html
 
 s:license: "https://www.apache.org/licenses/LICENSE-2.0" 
