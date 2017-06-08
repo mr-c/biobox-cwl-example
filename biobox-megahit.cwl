@@ -11,23 +11,23 @@ requirements:
     listing:
       - entryname: /bbx/input/biobox.yaml
         entry: |
-          ${ var ret = `---
-          version: "0.9.0"
-          arguments:
-            - fastq:
-          `;
+          ${
+             var fastqs = [];
              inputs.fastqs.forEach(function(entry, index) {
-               ret += `    - id: "reads${index}"
-                type: "paired"
-                value: "${entry.path}"
-             `;});
-             return ret; }
+               fastqs.push({"id": `reads${index}`,
+                            "type": "paired",
+                            "value": `${entry.path}`});
+                           });
+             var bbx_assembly_inputs = { "version": "0.9.0",
+                                         "arguments": [ {"fastq": fastqs } ] }
+             return JSON.stringify(bbx_assembly_inputs, null, 1);
+           }
 
 inputs:
   fastqs:
     label: interleaved paired & gzipped reads
     type: File[]
-    #format: edam:format_1930  # FASTQ
+    format: edam:format_1930  # FASTQ
 
 baseCommand: default
 
