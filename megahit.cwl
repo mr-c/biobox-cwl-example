@@ -57,6 +57,6 @@ $namespaces:
  bioboxes: http://bioboxes.org
 $schemas:
  - http://edamontology.org/EDAM_1.17.owl
- - https://schema.org/docs/schema_org_rdfa.html
+ - https://schema.org/version/latest/schema.rdf
 
 s:license: "https://www.apache.org/licenses/LICENSE-2.0" 
